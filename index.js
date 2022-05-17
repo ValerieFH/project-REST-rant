@@ -1,7 +1,9 @@
+//CONFIG
 const express = require('express')
 const app = express()
 require('dotenv').config()
 
+//ROUTES
 app.use('/places', require('./controllers/places'))
 
 app.get('/', (req, res) => {
