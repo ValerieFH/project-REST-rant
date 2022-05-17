@@ -15,3 +15,5 @@ app.get('*', (req, res) => {
 })
 
 app.listen(process.env.PORT)
+
+// Colors to use, Deep Taupe (#815E5B), Purple (#7A6F9B), Light Purple (#D4CDF4)
