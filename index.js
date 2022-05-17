@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-    res.status(404).send('<h1>Dang, 404, yall</h1>')
+    res.render('error404')
 })
 
 app.listen(process.env.PORT)
