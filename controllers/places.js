@@ -1,6 +1,12 @@
 const router = require('express').Router()
 const db = require('../models')
 
+//CREATE ROUTES
+//Create one GET
+router.get('/new', (req,res) => {
+    res.render('places/new')
+})
+
 //READ ROUTES
 //Read Index
 router.get('/', (req,res) => {
@@ -26,14 +32,11 @@ router.get('/:id', (req,res) => {
     })
 })
 
-//CREATE ROUTES
-//Create one GET
-router.get('/new', (req,res) => {
-    res.render('places/new')
-})
-
 //Create one POST
 router.post('/', (req, res) => {
+    if(!req.body.pic){
+        delete req.body['pic']
+    }
     db.Place.create(req.body)
     .then(() => {
         res.redirect('/places')
