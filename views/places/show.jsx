@@ -2,6 +2,7 @@ const React = require('react')
 const Def = require('../default')
 
 function show(data){
+    console.log(data)
     let comments = (
         <h3 className="inactive">
             No comments yet!
@@ -33,13 +34,33 @@ function show(data){
                 <h4>Serving { data.place.cuisines }</h4>
                 <h2>Comments</h2>
                 {comments}
-                <p>No comments yet!</p>
+                <br />
+                <form method="POST" action={`/places/${data.place._id}/comment`}>
+                    <div className="form-group">
+                        <label htmlFor="author">Author</label>
+                        <input className="form-control" id="author" name="author" type="text"/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="content">Comment</label>
+                        <input className="form-control" id="content" name="content" type="textarea"/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="stars">Rating</label>
+                        <input className="form-control" id="stars" name="stars" type="number" step="0.5"/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="rant">Rant?</label>
+                        <input className="form-control" id="rant" name="rant" type="checkbox"/>
+                    </div>
+                    <input className="btn btn-primary" type="submit" value="Add Comment" />
+                </form>
+                <br />
                 <a href={`/places/${data.id}/edit`} className="btn btn-warning">
-                    Edit
+                    Edit Place
                 </a>
                 <form method="POST" action={`/places/${data.id}?_method=DELETE`}>
                     <button type="submit" className="btn btn-danger">
-                        Delete
+                        Delete Place
                     </button>
                 </form>
             </main>
